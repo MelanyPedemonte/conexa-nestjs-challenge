@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/users.module';
 import { User } from './entities/user.entity';
 import { MovieModule } from './movies/movies.module';
+import { Movie } from './entities/movie.entity';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { MovieModule } from './movies/movies.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [User],
+      entities: [User, Movie],
       synchronize: true,
     }),
     UserModule,
