@@ -5,6 +5,7 @@ import * as Joi from 'joi';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/users.module';
 import { User } from './entities/user.entity';
+import { MovieModule } from './movies/movies.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { User } from './entities/user.entity';
     }),
     UserModule,
     AuthModule,
+    MovieModule,
   ],
   controllers: [],
   providers: [],
