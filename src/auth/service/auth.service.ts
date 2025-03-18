@@ -19,6 +19,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  //Registro de usuarios
   async register(registerDto: RegisterDto): Promise<User> {
     const { username, password, isAdmin } = registerDto;
 
@@ -38,6 +39,7 @@ export class AuthService {
     return this.userRepository.save(newUser);
   }
 
+  //Inicio de sesion
   async login(loginDto: LoginDto): Promise<string> {
     const { username, password } = loginDto;
     const user = await this.userRepository.findOne({ where: { username } });

@@ -12,6 +12,7 @@ export class SyncMoviesService {
     private readonly movieRepository: Repository<Movie>,
   ) {}
 
+  //Cron que sincroniza las peliculas una vez al dia a las 00:00hs
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
   async syncMoviesFromApi() {
     try {
