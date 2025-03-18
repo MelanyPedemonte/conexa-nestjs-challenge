@@ -48,7 +48,11 @@ export class AuthService {
     if (!isMatch) {
       throw new UnauthorizedException('Credenciales inválidas');
     }
-    const payload = { username: user.username, sub: user.id };
+    const payload = {
+      username: user.username,
+      sub: user.id,
+      isAdmin: user.isAdmin,
+    };
     return this.jwtService.sign(payload);
   }
 }
