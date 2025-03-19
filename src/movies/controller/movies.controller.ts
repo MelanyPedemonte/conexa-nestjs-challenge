@@ -23,11 +23,30 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { SyncMoviesService } from '../service/sync-movies.service';
 
 @ApiTags('Películas')
 @Controller('movies')
 export class MovieController {
-  constructor(private readonly movieService: MovieService) {}
+  constructor(
+    private readonly movieService: MovieService,
+    private readonly syncMoviesService: SyncMoviesService,
+  ) {}
+
+  @HttpCode(HttpStatus.OK)
+  @Get('sync')
+  @ApiOperation({
+    summary: 'Sincronizar películas desde la API',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Películas sincronizadas exitosamente',
+  })
+  @ApiResponse({ status: 500, description: 'Error en la sincronización' })
+  async syncMovies() {
+    await this.syncMoviesService.syncMoviesFromApi();
+    return { message: 'Películas sincronizadas exitosamente' };
+  }
 
   @HttpCode(HttpStatus.OK)
   @Get()

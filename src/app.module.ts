@@ -11,7 +11,6 @@ import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
-    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: '.env',
       validationSchema: Joi.object({
