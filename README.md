@@ -53,3 +53,7 @@ npm install
 ```bash
   npm run test
   ```
+
+### 6. Deploy 
+
+ Se deployo el proyecto en render https://conexa-nestjs-challenge.onrender.com/api.

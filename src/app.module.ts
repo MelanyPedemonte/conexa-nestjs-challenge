@@ -19,6 +19,7 @@ import { Movie } from './entities/movie.entity';
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
+        NODE_ENV: Joi.string().required(),
       }),
       isGlobal: true,
     }),
@@ -29,9 +30,10 @@ import { Movie } from './entities/movie.entity';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      ssl: {
-        rejectUnauthorized: false,
-      },
+      ssl:
+        process.env.NODE_ENV !== 'development'
+          ? { rejectUnauthorized: false }
+          : false,
       entities: [User, Movie],
       synchronize: true,
     }),
