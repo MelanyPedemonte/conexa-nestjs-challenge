@@ -7,9 +7,11 @@ import { UserModule } from './users/users.module';
 import { User } from './entities/user.entity';
 import { MovieModule } from './movies/movies.module';
 import { Movie } from './entities/movie.entity';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: '.env',
       validationSchema: Joi.object({

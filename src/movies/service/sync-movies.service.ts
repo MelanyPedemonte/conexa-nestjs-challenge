@@ -12,8 +12,8 @@ export class SyncMoviesService {
     private readonly movieRepository: Repository<Movie>,
   ) {}
 
-  //Cron que sincroniza las peliculas una vez al dia a las 00:00hs
-  @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+  //Cron que sincroniza las peliculas una vez al dia a las 08:00hs
+  @Cron('0 8 * * *')
   async syncMoviesFromApi() {
     try {
       const response = await axios.get('https://swapi.dev/api/films/');
