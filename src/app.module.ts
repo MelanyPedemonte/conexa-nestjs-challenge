@@ -29,6 +29,9 @@ import { Movie } from './entities/movie.entity';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
+      ssl: {
+        rejectUnauthorized: false,
+      },
       entities: [User, Movie],
       synchronize: true,
     }),
