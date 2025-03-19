@@ -17,7 +17,12 @@ import { Roles } from '../../auth/roles.decorator';
 import { RolesGuard } from '../../auth/roles.guard';
 import { CreateMovieDto } from '../dto/create-movie.dto';
 import { UpdateMovieDto } from '../dto/update-movie.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Películas')
 @Controller('movies')
@@ -33,6 +38,7 @@ export class MovieController {
     description: 'Lista de películas obtenida exitosamente',
   })
   @ApiResponse({ status: 401, description: 'No autorizado' })
+  @ApiBearerAuth()
   async getFilms(): Promise<any> {
     return this.movieService.getFilms();
   }
@@ -50,6 +56,7 @@ export class MovieController {
   })
   @ApiResponse({ status: 403, description: 'Acceso prohibido' })
   @ApiResponse({ status: 404, description: 'Película no encontrada' })
+  @ApiBearerAuth()
   async getMovieDetails(@Param('id') id: number) {
     return this.movieService.getMovieDetails(id);
   }
@@ -62,6 +69,7 @@ export class MovieController {
   @ApiResponse({ status: 201, description: 'Película creada exitosamente' })
   @ApiResponse({ status: 400, description: 'Datos inválidos' })
   @ApiResponse({ status: 403, description: 'Acceso prohibido' })
+  @ApiBearerAuth()
   async createMovie(@Body() createMovieDto: CreateMovieDto) {
     return this.movieService.createMovie(createMovieDto);
   }
@@ -80,6 +88,7 @@ export class MovieController {
   @ApiResponse({ status: 400, description: 'Datos inválidos' })
   @ApiResponse({ status: 403, description: 'Acceso prohibido' })
   @ApiResponse({ status: 404, description: 'Película no encontrada' })
+  @ApiBearerAuth()
   async updateMovie(
     @Param('id') id: number,
     @Body() updateMovieDto: UpdateMovieDto,
@@ -95,6 +104,7 @@ export class MovieController {
   @ApiResponse({ status: 200, description: 'Película eliminada exitosamente' })
   @ApiResponse({ status: 403, description: 'Acceso prohibido' })
   @ApiResponse({ status: 404, description: 'Película no encontrada' })
+  @ApiBearerAuth()
   async deleteMovie(@Param('id') id: number) {
     return this.movieService.deleteMovie(id);
   }
