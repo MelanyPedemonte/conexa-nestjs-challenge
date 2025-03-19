@@ -1,8 +1,6 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Movie } from 'src/entities/movie.entity';
+import { Movie } from '../../entities/movie.entity';
 import { Repository } from 'typeorm';
 import { CreateMovieDto } from '../dto/create-movie.dto';
 import { UpdateMovieDto } from '../dto/update-movie.dto';
@@ -10,7 +8,6 @@ import { UpdateMovieDto } from '../dto/update-movie.dto';
 @Injectable()
 export class MovieService {
   constructor(
-    private httpService: HttpService,
     @InjectRepository(Movie)
     private readonly movieRepository: Repository<Movie>,
   ) {}

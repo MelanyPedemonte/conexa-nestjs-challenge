@@ -3,7 +3,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import axios from 'axios';
-import { Movie } from 'src/entities/movie.entity';
+import { Movie } from '../../entities/movie.entity';
 
 @Injectable()
 export class SyncMoviesService {

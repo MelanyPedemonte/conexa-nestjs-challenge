@@ -12,9 +12,9 @@ import {
   Delete,
 } from '@nestjs/common';
 import { MovieService } from '../service/movies.service';
-import { JwtAuthGuard } from 'src/auth/jwt.auth.guard';
-import { Roles } from 'src/auth/roles.decorator';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from '../../auth/jwt.auth.guard';
+import { Roles } from '../../auth/roles.decorator';
+import { RolesGuard } from '../../auth/roles.guard';
 import { CreateMovieDto } from '../dto/create-movie.dto';
 import { UpdateMovieDto } from '../dto/update-movie.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
