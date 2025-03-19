@@ -56,4 +56,4 @@ npm install
 
 ### 6. Deploy 
 
- Se deployo el proyecto en render https://conexa-nestjs-challenge.onrender.com/api.
+ Se deployo el proyecto en render https://conexa-nestjs-challenge-2.onrender.com/api.
